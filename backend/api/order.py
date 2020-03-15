@@ -52,3 +52,5 @@ def new_order():
     cursor.execute(sql3, (round_id, phone, name, id_number, order_num))
     db.commit()
     return make_response(msg="插入订单项成功")
+
+
