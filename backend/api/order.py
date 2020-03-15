@@ -33,19 +33,33 @@ def new_order():
     if id_number is None:
         return make_response(msg="电话号码为空", code=111)
     order_num = request.form.get('order_num')
-    if id_number is None:
+    if order_num is None:
         return make_response(msg="订单数量为空", code=111)
 
-    time_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    time_now = datetime.datetime.now()
     sql1 = """SELECT * FROM order_set WHERE status=0 """
     db, cursor = get_db()
     cursor.execute(sql1)
     result = cursor.fetchone()
-    round_id = result[0]
-    start_time = result[1]
-    end_time = result[2]
+    if result is None:
+        return make_response(msg="预约不存在", code=111)
+    round_id = result['id']
+    start_time = result['start_time']
+    end_time = result['end_time']
     if (time_now < start_time) | (time_now > end_time) | round_id is None:
-        return make_response(msg="当前时间不可预订口罩")
+        return make_response(msg="当前时间不可预订口罩", code=111)
+
+    cursor.execute("SELECT id FROM orders"
+                   " WHERE (phone=%s OR id_number=%s) AND round_id >= %s AND status=1",
+                   (phone, id_number, round_id-3))
+    if cursor.fetchone() is not None:
+        return make_response(msg="该手机号或身份证号码近期已中签过口罩", code=111)
+
+    cursor.execute("SELECT id FROM orders"
+                   " WHERE (phone=%s OR id_number=%s) AND round_id =%s",
+                   (phone, id_number, round_id))
+    if cursor.fetchone() is not None:
+        return make_response(msg="该手机号或身份证号码已预约过口罩", code=111)
 
     sql3 = """INSERT INTO orders(round_id, phone, name, id_number,order_num)
          VALUES (%s, %s, %s, %s,%s)"""

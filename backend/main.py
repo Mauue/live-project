@@ -1,9 +1,11 @@
+from apscheduler.schedulers.blocking import BlockingScheduler
 from flask import Flask
 from api import api
 import db
 from util.register_admin import register_admin
 from util.init_db import init_db_command
 
+scheduler = BlockingScheduler()
 
 def create_app():
     _app = Flask(__name__)
@@ -17,6 +19,8 @@ def create_app():
     )
     _app.register_blueprint(api)
     init_app(_app)
+
+    # scheduler.start()
 
     return _app
 
