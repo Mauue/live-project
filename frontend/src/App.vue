@@ -65,6 +65,8 @@ body {
 	margin:0;
 }
 #app {
+	max-width: 700px;
+	margin:0 auto;
 }
 button {
    margin: 0 auto;
