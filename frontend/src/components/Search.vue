@@ -33,9 +33,9 @@ export default {
 				return
 			}
 			var obj = {
-				number:this.callBackData[0],
+				orderid:this.callBackData[0],
 			}
-			$ajax.get(require('../js/url.js') + `/api/order/<orderid>`,obj)
+			$ajax.get(require('../js/url.js') + `/api/order/`,obj)
 			.then(doc=>{
 				doc.data.code==0 && this.$alert(doc.data.msg, "true");//成功
 				doc.data.code==100 && this.$alert(doc.data.msg, "false");//预约编号不存在
