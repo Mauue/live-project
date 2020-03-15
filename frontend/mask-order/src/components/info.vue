@@ -16,11 +16,11 @@
 			<input placeholder="请输入身份证号码">
 		</section>
       <section>
-			<div>身份证号码</div>
+			<div>手机号码</div>
 			<div style="color:#ED9E7E">
 				<img src="../assets/common/t.svg">姓名字数过多！
 			</div>
-			<input placeholder="请输入身份证号码">
+			<input placeholder="请输入手机号码">
 		</section>
       <section>
 			<div>身份证号码</div>
