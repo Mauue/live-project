@@ -54,6 +54,7 @@ export default {
 #wrapper{
 	display: flex;
 	justify-content: space-around;
+   margin:150px auto auto auto;
 }
 header{
 	text-align: center;
