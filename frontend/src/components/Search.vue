@@ -1,7 +1,10 @@
 <template>
    <div id="app">
 		<number :config="getConfig" @callBack="callBackOn"></number>
-		<button @click="check" style="margin-top:7px">查询</button>
+		<button @click="check" style="margin-top:7px">
+			<img src="../assets/search_s.png" />
+			查询
+		</button>
 	</div>
 </template>
 

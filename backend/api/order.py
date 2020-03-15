@@ -6,7 +6,7 @@ import time
 import datetime
 
 
-# @api.route('/order', methods=['POST', 'GET'])
+@api.route('/order', methods=['POST', 'GET'])
 def order_mask():
     if request.method == "POST":
         return new_order()
@@ -17,6 +17,8 @@ def order_info():
     db, cursor = get_db()
     cursor.execute("SELECT * FROM order_set ORDER BY id DESC LIMIT 1")  # 只返回最新的一条记录
     data = cursor.fetchone()
+    data['start_time'] = data['start_time'].strftime('%Y-%m-%d %H:%M:%S')
+    data['end_time'] = data['end_time'].strftime('%Y-%m-%d %H:%M:%S')
     return make_response(data=data)
 
 
@@ -38,10 +40,11 @@ def new_order():
     cursor.execute(sql1)
     round_id = cursor.fetchone()[0]
 
-    sql2 = """INSERT INTO orders(id,round_id, phone, name, id_number,order_num,status,create_time)
-         VALUES (null ,%s, %s, %s, %s,%s,null,null)"""
+    sql2 = """INSERT INTO orders(round_id, phone, name, id_number,order_num)
+         VALUES (%s, %s, %s, %s,%s)"""
 
     cursor.execute(sql2, (round_id, phone, name, id_number, order_num))
+    db.commit()
     return make_response(msg="插入订单项成功")
 
 
