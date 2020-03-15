@@ -33,22 +33,14 @@ def new_order():
     order_num = request.form.get('order_num')
     if id_number is None:
         return make_response(msg="订单数量为空", code=111)
-    time_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    sql1 = """SELECT * FROM order_set ORDER BY id DESC """
+    sql1 = """SELECT id FROM order_set WHERE status=0 """
     db, cursor = get_db()
     cursor.execute(sql1)
-    results = cursor.fetchall()
-    for row in results:
-        start_time = row[1]
-        end_time = row[2]
-        if (start_time < time_now) & (time_now < end_time):
-            round_id = row[0]
-            break
+    round_id = cursor.fetchone()[0]
 
-    sql2 = """INSERT INTO orders(round_id, phone, name, id_number,order_num)
-         VALUES (%s, %s, %s, %s,%s)"""
+    sql2 = """INSERT INTO orders(id,round_id, phone, name, id_number,order_num,status,create_time)
+         VALUES (null ,%s, %s, %s, %s,%s,null,null)"""
 
-    db, cursor = get_db()
     cursor.execute(sql2, (round_id, phone, name, id_number, order_num))
     return make_response(msg="插入订单项成功")
 
