@@ -6,7 +6,8 @@
       </div>
 		<header>口罩预约系统</header>
       <div v-if="router==0">
-         <div id="wrapper">
+         
+         <div id="wrapper">           
             <section @click="router=1">
                <img src="./assets/clock.png" />
                <p>摇号预约</p>
@@ -24,6 +25,7 @@
                <p>联系客服</p>
             </section>
          </div>
+         
       </div>
       <order v-if="router==1"></order>
       <search v-if="router==2"></search>
@@ -66,6 +68,8 @@ body {
 	margin:0;
 }
 #app {
+	max-width: 700px;
+	margin:0 auto;
 }
 button {
    margin: 0 auto;
