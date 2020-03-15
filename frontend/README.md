@@ -1,31 +1,10 @@
-# mask-order
+# mask-order 
 
-## Project setup
-```
-npm install
-```
+## 前端部分 
 
-### Compiles and hot-reloads for development
-```
+### 1.安装node环境并cd到该目录(```cd frontend```) 
 
-npm run serve
-```
+### 2.```npm install``` 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 3.```npm run serve``` 
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
