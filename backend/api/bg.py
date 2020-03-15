@@ -7,7 +7,8 @@ from db.admin import check_admin
 from db import get_db
 from datetime import datetime
 
-@api.route('/bg/set_order', methods=['POST'])
+
+@api.route('/bg/order/set', methods=['POST'])
 def set_order():
     current_time = datetime.now()
     start_time = request.form.get('start_time')
