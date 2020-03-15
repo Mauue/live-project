@@ -39,7 +39,7 @@ export default {
 				phone:this.callBackData[2],
 				number:this.callBackData[3],
 			}
-			$ajax.post(require('../js/url.js') + `/api/order`,obj)
+			$ajax.post(require('../js/url.js').url + `/api/order`,obj)
 			.then(doc=>{
 				doc.data.code==0 && this.$alert(doc.data.msg, "true");
 				doc.data.code==1 && this.$alert(doc.data.msg, "false");
