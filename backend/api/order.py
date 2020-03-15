@@ -1,5 +1,5 @@
-from api import api
-from flask import request, jsonify
+from api import api, make_response
+from flask import request
 from db import get_db
 import json
 
@@ -15,7 +15,7 @@ def order_info():
     db, cursor = get_db()
     cursor.execute("SELECT * FROM order_set ORDER BY id DESC LIMIT 1")  # 只返回最新的一条记录
     data = cursor.fetchone()
-    return jsonify(data)
+    return make_response(data)
 
 
 def new_order():
