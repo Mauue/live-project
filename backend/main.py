@@ -2,6 +2,8 @@ from flask import Flask
 from api import api
 import db
 from util.register_admin import register_admin
+from util.init_db import init_db_command
+
 
 def create_app():
     _app = Flask(__name__)
@@ -21,6 +23,7 @@ def create_app():
 
 def init_app(app):
     app.cli.add_command(register_admin)
+    app.cli.add_command(init_db_command)
 
 
 if __name__ == "__main__":
