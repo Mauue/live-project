@@ -79,6 +79,7 @@
       position: absolute;
       z-index: 502;
       height: 100%;
+		font-size: 5px;
    }
 
     #black {
@@ -111,7 +112,7 @@
    }
 
    .alert img {
-      width: 8rem;
+      width: 6rem;
    }
 
    .alert {
@@ -122,7 +123,7 @@
    }
 
    .alert span {
-      font-size: 1.8rem;
+      font-size: 18px;
       vertical-align: 2rem;
       line-height: 0;
       white-space: pre;
