@@ -6,7 +6,8 @@ CREATE TABLE order_set(
   start_time DATETIME NOT NULL,
   end_time DATETIME NOT NULL,
   total INTEGER NOT NULL,
-  order_max TINYINT DEFAULT 3
+  order_max TINYINT DEFAULT 3,
+  status TINYINT DEFAULT 0
 );
 
 CREATE TABLE orders(

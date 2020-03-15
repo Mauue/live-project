@@ -1,6 +1,6 @@
 <template>
    <div id="app">
-		<div id="button" @click="router=0">
+      <div id="button" @click="router=0">
          <img src="./assets/arrow.svg" />
          <div>返回</div>
       </div>
@@ -11,21 +11,22 @@
                <img />
                <p>摇号预约</p>
             </section>
-            <section>
+            <section @click="router=2">
                <img src />
                <p>中签查询</p>
             </section>
             <section>
                <img src />
-               <p>中签查询</p>
+               <p>管理员登录</p>
             </section>
             <section>
                <img src />
-               <p>中签查询</p>
+               <p>联系客服</p>
             </section>
          </div>
       </div>
       <order v-if="router==1"></order>
+      <search v-if="router==2"></search>
    </div>
 </template>
 
@@ -40,6 +41,8 @@ export default {
       }
    }
 };
+
+
 </script>
 
 <style>
@@ -49,7 +52,7 @@ export default {
 }
 header{
 	text-align: center;
-	background-color: rgba(221, 221, 221, 0.25);
+	background-color: #BCE7EE;
 	padding:15px;
 	font-weight: bold;
 }
