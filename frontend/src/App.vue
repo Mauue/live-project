@@ -34,9 +34,12 @@
 
 <script>
 import order from "./components/Order.vue";
+import admin from "./components/Admin.vue";
+import service from "./components/Service.vue";
+import search from "./components/Search.vue";
 export default {
    name: "App",
-   components: { order },
+   components: { order,admin,service,search },
    data(){
       return{
          router: 0
