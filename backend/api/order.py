@@ -29,4 +29,6 @@ def new_order():
          VALUES (%s, %s, %s, %s,%s)"""
 
     db, cursor = get_db()
-    cursor.execute(sql, order_id, phone, name, id_number, order_num)
+    cursor.execute(sql, (order_id, phone, name, id_number, order_num))
+    cursor.close()
+
