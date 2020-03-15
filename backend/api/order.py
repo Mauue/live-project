@@ -38,10 +38,11 @@ def new_order():
     cursor.execute(sql1)
     round_id = cursor.fetchone()[0]
 
-    sql2 = """INSERT INTO orders(id,round_id, phone, name, id_number,order_num,status,create_time)
-         VALUES (null ,%s, %s, %s, %s,%s,null,null)"""
+    sql2 = """INSERT INTO orders(round_id, phone, name, id_number,order_num)
+         VALUES (%s, %s, %s, %s,%s)"""
 
     cursor.execute(sql2, (round_id, phone, name, id_number, order_num))
+    db.commit()
     return make_response(msg="插入订单项成功")
 
 
