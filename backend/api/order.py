@@ -41,7 +41,7 @@ def new_order():
     for row in results:
         start_time = row[1]
         end_time = row[2]
-        if time_cmp(start_time, time_now) < 0 & time_cmp(time_now, end_time) < 0:
+        if (start_time < time_now) & (time_now < end_time):
             round_id = row[0]
             break
 
@@ -51,10 +51,5 @@ def new_order():
     db, cursor = get_db()
     cursor.execute(sql2, (round_id, phone, name, id_number, order_num))
     return make_response(msg="插入订单项成功")
-
-
-def time_cmp(first_time, second_time):
-    return int(time.strftime("%Y-%m-%d %H:%M:%S", first_time)) - int(time.strftime("%Y-%m-%d %H:%M:%S", second_time))
-
 
 
