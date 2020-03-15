@@ -27,14 +27,11 @@ def draw_mask():
         return None
 
     order_max = int(order_round['total']/order_round['order_max'])
-    print(order_max)
     random.shuffle(orders)
     order_success = orders[0: order_max]
-    print(order_success)
     order_phone_list = [i['phone'] for i in order_success]
     sql = "UPDATE orders SET status=1 " \
           "WHERE round_id=%s AND phone in (%s)" % (round_id, ','.join(['%s'] * len(order_success)))
-    print(sql)
     cursor.execute(sql, order_phone_list)
     db.commit()
     return None
