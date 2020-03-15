@@ -27,6 +27,8 @@ export default {
 		},
 		submit(){
 			//console.log(this.callBackData)  不清楚就输出看一下
+			
+			console.log(require('../js/url').url + `/api/order`)
 			if(!this.callBackData){
 				this.$alert('请检查输入', "false");
 				return
@@ -41,6 +43,8 @@ export default {
 			.then(doc=>{
 				doc.data.code==0 && this.$alert(doc.data.msg, "true");
 				doc.data.code==1 && this.$alert(doc.data.msg, "false");
+			}).catch(err=>{
+				this.$alert("未知错误", "false");
 			})
 		}
 	},
