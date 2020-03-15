@@ -6,9 +6,10 @@
       </div>
 		<header>口罩预约系统</header>
       <div v-if="router==0">
-         <div id="wrapper">
+         
+         <div id="wrapper">           
             <section @click="router=1">
-               <img />
+               <img src />
                <p>摇号预约</p>
             </section>
             <section @click="router=2">
@@ -24,6 +25,7 @@
                <p>联系客服</p>
             </section>
          </div>
+         
       </div>
       <order v-if="router==1"></order>
       <search v-if="router==2"></search>
