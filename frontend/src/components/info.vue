@@ -1,6 +1,6 @@
 <template>
    <div class="info">
-      <header>个人信息</header>
+      <div id="header">个人信息</div>
       <section v-for="(item,i) in config" :key="item.name">
          <div>{{item.name}}</div>
          <div style="color:#ED9E7E" v-if="!inputValid[i]">
@@ -66,10 +66,11 @@ export default {
 
 <style scoped>
 .info {
+	padding:10px 10px;
 }
-header {
+#header {
 }
-header::before {
+#header::before {
    display: inline-block;
    height: 16px;
    width: 4px;
