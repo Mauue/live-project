@@ -33,8 +33,8 @@ export default {
 	computed:{
 		getConfig(){
 			return [
-				{name:"用户名",type:"chn",size:[2,4]},
-				{name:"密码",type:"digit",size:[18,18]},
+				{name:"用户名",type:"chn",size:[2,8]},
+				{name:"密码",type:"digit",size:[6,18]},
 			]
 		}
 	}
