@@ -8,3 +8,5 @@
 [POST `api/bg/order/set`  设置预约信息](api/set_order.md)
 
 [POST `api/bg/login` 管理员登录](api/admin_login.md)
+
+[GET `api/bg/finish_order` 结束当前场次的预约](api/finish_order.md)

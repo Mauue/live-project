@@ -6,7 +6,7 @@ from flask import request, session
 from db.admin import check_admin
 from db import get_db
 from datetime import datetime
-
+from util.draw import draw_mask
 
 @api.route('/bg/order/set', methods=['POST'])
 def set_order():
@@ -57,6 +57,14 @@ def admin_login():
     session.clear()
     session['username'] = username
     return make_response(msg="登录成功")
+
+
+@api.route('/bg/finish_order')
+def finish_order():
+    msg = draw_mask()
+    if msg:
+        return make_response(msg=msg, code=100)
+    return make_response()
 
 
 def login_required(view):
