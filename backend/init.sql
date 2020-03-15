@@ -11,14 +11,14 @@ CREATE TABLE order_set(
 
 CREATE TABLE orders(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  order_id INTEGER NOT NULL,
+  round_id INTEGER NOT NULL,
   phone CHAR(11) NOT NULL,
   name VARCHAR(32) NOT NULL,
   id_number CHAR(18) NOT NULL,
   order_num TINYINT NOT NULL,
   status TINYINT DEFAULT 0,
   create_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
-  FOREIGN KEY orders(order_id) REFERENCES order_set(id)
+  FOREIGN KEY orders(round_id) REFERENCES order_set(id)
 )charset=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS admin(
