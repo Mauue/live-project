@@ -4,33 +4,43 @@ import time
 from api import api, make_response
 from flask import request, session
 from db.admin import check_admin
-
+from db import get_db
+from datetime import datetime
 
 @api.route('/bg/set_order', methods=['POST'])
 def set_order():
-    current_time = time.time()
+    current_time = datetime.now()
     start_time = request.form.get('start_time')
     end_time = request.form.get('end_time')
-    total = request.form.get('total')
-    order_max = request.form.get('order_max')
+    total = request.form.get('total', type=int)
+    order_max = request.form.get('order_max', type=int)
 
-    if start_time <current_time or start_time > end_time or order_max > total or total < 1 or order_max < 1:
-        return make_response(msg="设置错误")
     if start_time is None:
-        return make_response(msg="未设置开始日期")
+        return make_response(msg="未设置开始日期", code=100)
     if end_time is None:
-        return make_response(msg="未设置结束日期")
+        return make_response(msg="未设置结束日期", code=100)
     if total is None:
-        return make_response(msg="未设置总量")
+        return make_response(msg="未设置总量", code=100)
     if order_max is None:
-        return make_response(msg="未设置预约数量")
+        return make_response(msg="未设置预约数量", code=100)
+    try:
+        start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
+        end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return make_response(msg="日期格式错误", code=200)
+    if start_time < current_time or start_time > end_time or \
+            order_max > total or total < 1 or order_max < 1:
+        return make_response(msg="设置信息错误", code=201)
 
     db, cursor = get_db()
+    cursor.execute("SELECT id FROM order_set WHERE status=0")
+    if cursor.fetchone() is not None:
+        return make_response(msg="存在未进行抽签的预约", code=300)
+
     cursor.execute("INSERT INTO order_set(start_time, end_time, total, order_max) "
                    "values (%s, %s, %s, %s)", (start_time, end_time, total, order_max))
+    db.commit()
     return make_response(msg="设置成功")
-
-
 
 
 @api.route('/bg/login', methods=['POST'])
