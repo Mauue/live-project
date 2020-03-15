@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
+/frontend/node_modules
 package-lock.json
-/dist
+\dist
 
 # local env files
 .env.local
