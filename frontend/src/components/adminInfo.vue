@@ -66,6 +66,8 @@ export default {
 
 <style scoped>
 .info {
+   margin: 0 auto;
+   width:600px;
 	padding:10px 10px;
 }
 #header {
