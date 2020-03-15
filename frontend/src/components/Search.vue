@@ -26,8 +26,6 @@ export default {
 		},
 		check(){
 			//console.log(this.callBackData)
-
-			//console.log(require('../js/url').url + `/api/order`)
 			if(!this.callBackData){
 				this.$alert('请检查输入', "false");
 				return
@@ -35,7 +33,7 @@ export default {
 			var obj = {
 				orderid:this.callBackData[0],
 			}
-			$ajax.get(require('../js/url.js') + `/api/order/`,obj)
+			$ajax.get(require('../js/url.js') + `/api/order/` + obj.orderid)
 			.then(doc=>{
 				doc.data.code==0 && this.$alert(doc.data.msg, "true");//成功
 				doc.data.code==100 && this.$alert(doc.data.msg, "false");//预约编号不存在
