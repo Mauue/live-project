@@ -24,10 +24,11 @@ export default {
 			console.log(data)
 		},
 		submit(){
+			console.log(this.callBackData)
 			var url = ''
-			$ajax.post(url, this.callBackData,(data)=>{
+			// $ajax.post(url, this.callBackData,(data)=>{
 				
-			})
+			// })
 		}
 	},
 	computed:{

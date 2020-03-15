@@ -28,7 +28,7 @@ export default {
 	data(){
 		return{
 			inputText:[],
-			inputValid:[],
+			inputValid:[0,0,0,0,0,0],
 			
 		}
 	},
@@ -42,18 +42,22 @@ export default {
 			var max = item.size[1]
 			var text = this.inputText[index]
 			var t = false
-			console.log(item)
 			if(type=='digit'){
 				t = /^[0-9]+$/g.test(text) && text.length>=min && text.length<=max
 				this.inputValid[index] = Boolean(t)
-				if(text<item.limit[0] && text) this.inputText[index]=item.limit[0]
-				if(text>item.limit[1] && text) this.inputText[index]=item.limit[1]
+				if(item.limit && text<item.limit[0] && text) this.inputText[index]=item.limit[0]
+				if(item.limit && text>item.limit[1] && text) this.inputText[index]=item.limit[1]
 			}
 			if(type=='chn'){
 				t = /^[^\x00-\xff]+$/g.test(text) && text.length>=min && text.length<=max
 				this.inputValid[index] = Boolean(t)
 			}
-			t && this.$emit('callBack',this.inputText)
+			// var flag = true
+			// for(let i=0;i<=this.config.length;i++){
+			// 	let v = this.inputValid[i]
+			// 	if(!v) flag = false
+			// }
+			this.$emit('callBack',this.inputText)
 		}
 	}
 };
