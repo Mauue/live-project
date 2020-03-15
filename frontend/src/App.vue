@@ -8,19 +8,19 @@
       <div v-if="router==0">
          <div id="wrapper">
             <section @click="router=1">
-               <img />
+               <img src="./assets/clock.png" />
                <p>摇号预约</p>
             </section>
             <section @click="router=2">
-               <img src />
+               <img src="./assets/search.png" />
                <p>中签查询</p>
             </section>
             <section @click="router=3">
-               <img src />
+               <img src="./assets/admin.png" />
                <p>管理员登录</p>
             </section>
             <section @click="router=4">
-               <img src />
+               <img src="./assets/service.png" />
                <p>联系客服</p>
             </section>
          </div>
