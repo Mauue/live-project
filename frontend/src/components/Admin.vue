@@ -23,11 +23,25 @@ export default {
 			console.log(data)
 		},
 		submit(){
-			console.log(this.callBackData)
-			var url = ''
-			// $ajax.post(url, this.callBackData,(data)=>{
-				
-			// })
+			//console.log(this.callBackData)  //不清楚就输出看一下
+			
+			//console.log(require('../js/url').url + `/api/order`)
+			if(!this.callBackData){
+				this.$alert('请检查输入', "false");
+				return
+			}
+			var obj = {
+				name:this.callBackData[0],
+				password:this.callBackData[1],
+			}
+			$ajax.post(require('../js/url.js') + `/api/bg/login`,obj)
+			.then(doc=>{
+				doc.data.code==0 && this.$alert(doc.data.msg, "true");
+				doc.data.code==100 && this.$alert(doc.data.msg, "false");//未填写用户名或密码
+				doc.data.code==200 && this.$alert(doc.data.msg, "false");//账号不存在或密码错误
+			}).catch(err=>{
+				this.$alert("未知错误", "false");
+			})
 		}
 	},
 	computed:{
