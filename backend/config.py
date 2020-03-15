@@ -4,6 +4,11 @@ DB_USER = 'root'
 DB_PASSWORD = '123456'
 DB_DATABASE = 'order_mask'
 
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+REDIS_PASSWORD = None
+REDIS_DB = 0
+REDIS_PREFIX = 'ISW:'
 
 try:
     import os, sys, traceback
