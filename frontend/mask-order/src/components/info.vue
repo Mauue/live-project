@@ -6,7 +6,7 @@
 			<div style="color:#ED9E7E">
 				<img src="../assets/common/t.svg">姓名字数过多！
 			</div>
-			<input placeholder="请输入真实姓名">
+			<input type="number" placeholder="请输入真实姓名">
 		</section>
       <section>
 			<div>身份证号码</div>
