@@ -49,7 +49,7 @@ export default {
 				if(item.limit && text>item.limit[1] && text) this.inputText[index]=item.limit[1]
 			}
 			if(type=='chn'){
-				t = /^[^\x00-\xff]+$/g.test(text) && text.length>=min && text.length<=max
+				t =text.length>=min && text.length<=max
 				this.inputValid[index] = Boolean(t)
 			}
 			// var flag = true
@@ -66,6 +66,8 @@ export default {
 
 <style scoped>
 .info {
+   margin: 0 auto;
+   width:600px;
 	padding:10px 10px;
 }
 #header {

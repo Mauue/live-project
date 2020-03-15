@@ -1,7 +1,10 @@
 <template>
    <div id="app">
 		<info :config="getConfig" @callBack="callBackOn"></info>
-		<button @click="submit" style="margin-top:7px">提交</button>
+		<button @click="submit" style="margin-top:7px">
+			<img src="../assets/submit.svg" />
+			提交
+		</button>
 	</div>
 </template>
 

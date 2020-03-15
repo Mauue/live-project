@@ -6,7 +6,7 @@ import time
 import datetime
 
 
-# @api.route('/order', methods=['POST', 'GET'])
+@api.route('/order', methods=['POST', 'GET'])
 def order_mask():
     if request.method == "POST":
         return new_order()
@@ -17,6 +17,8 @@ def order_info():
     db, cursor = get_db()
     cursor.execute("SELECT * FROM order_set ORDER BY id DESC LIMIT 1")  # 只返回最新的一条记录
     data = cursor.fetchone()
+    data['start_time'] = data['start_time'].strftime('%Y-%m-%d %H:%M:%S')
+    data['end_time'] = data['end_time'].strftime('%Y-%m-%d %H:%M:%S')
     return make_response(data=data)
 
 
