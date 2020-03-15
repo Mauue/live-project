@@ -1,7 +1,10 @@
 <template>
    <div id="app">
 		<info :config="getConfig" @callBack="callBackOn"></info>
-		<button @click="router=5" style="margin-top:7px">登录</button>
+		<button @click="router=5" style="margin-top:7px">
+			<img src="../assets/load.svg" />
+			登录
+		</button>
 	</div>
 </template>
 
