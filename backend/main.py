@@ -1,5 +1,6 @@
 from flask import Flask
-import backend.db
+from api import api
+import db
 
 def create_app():
     _app = Flask(__name__)
@@ -7,6 +8,9 @@ def create_app():
     @_app.route('/')
     def index():
         return 'Hello World!'
+
+    _app.register_blueprint(api)
+
     return _app
 
 

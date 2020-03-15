@@ -10,4 +10,5 @@ except pymysql.Error as e:
 
 
 def get_db():
-    return _db
+    cursor = _db.cursor(pymysql.cursors.DictCursor)
+    return _db, cursor
