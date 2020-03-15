@@ -1,5 +1,9 @@
 <template>
    <div id="app">
+      <div id="button" @click="router=0">
+         <img src="./assets/arrow.svg" />
+         <div>返回</div>
+      </div>
 		<header>口罩预约系统</header>
       <div v-if="router==0">
          <div id="wrapper">
@@ -7,35 +11,41 @@
                <img />
                <p>摇号预约</p>
             </section>
-            <section>
+            <section @click="router=2">
                <img src />
                <p>中签查询</p>
             </section>
-            <section>
+            <section @click="router=3">
                <img src />
                <p>管理员登录</p>
             </section>
-            <section>
+            <section @click="router=4">
                <img src />
                <p>联系客服</p>
             </section>
          </div>
       </div>
       <order v-if="router==1"></order>
+      <search v-if="router==2"></search>
+      <admin v-if="router==3"></admin>
+      <service v-if="router==4"></service>
    </div>
 </template>
 
 <script>
 import order from "./components/Order.vue";
+import search from "./components/Search.vue";
 export default {
    name: "App",
-   components: { order },
+   components: { order,search },
    data(){
       return{
          router: 0
       }
    }
 };
+
+
 </script>
 
 <style>
