@@ -11,7 +11,7 @@
                <img />
                <p>摇号预约</p>
             </section>
-            <section>
+            <section @click="router=2">
                <img src />
                <p>中签查询</p>
             </section>
@@ -26,6 +26,7 @@
          </div>
       </div>
       <order v-if="router==1"></order>
+      <search v-if="router==2"></search>
    </div>
 </template>
 
@@ -40,6 +41,8 @@ export default {
       }
    }
 };
+
+
 </script>
 
 <style>
