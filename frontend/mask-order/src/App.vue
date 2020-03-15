@@ -1,21 +1,23 @@
 <template>
-  <div id="app">
-    hello worlddd
-  </div>
+   <div id="app">
+		<info></info>
+	</div>
 </template>
 
 <script>
-
+import info from './components/info.vue'
 export default {
-  name: 'App',
-  components: {
-    
-  }
-}
+   name: "App",
+   components: {info}
+};
 </script>
 
 <style>
-#app {
-  
+body{
+	
 }
+#app {
+
+}
+
 </style>
