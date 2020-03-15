@@ -36,6 +36,8 @@
 import order from "./components/Order.vue";
 import admin from "./components/Admin.vue";
 import service from "./components/Service.vue";
+//用于测试OrderSuccess.vue界面
+//import service from "./components/OrderSuccess.vue";
 import search from "./components/Search.vue";
 export default {
    name: "App",
