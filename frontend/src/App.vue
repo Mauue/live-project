@@ -1,5 +1,9 @@
 <template>
    <div id="app">
+      <div id="button" @click="router=0">
+         <img src="./assets/arrow.svg" />
+         <div>返回</div>
+      </div>
 		<header>口罩预约系统</header>
       <div v-if="router==0">
          <div id="wrapper">
