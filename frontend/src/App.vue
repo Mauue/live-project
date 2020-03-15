@@ -15,11 +15,11 @@
                <img src />
                <p>中签查询</p>
             </section>
-            <section>
+            <section @click="router=3">
                <img src />
                <p>管理员登录</p>
             </section>
-            <section>
+            <section @click="router=4">
                <img src />
                <p>联系客服</p>
             </section>
@@ -27,6 +27,8 @@
       </div>
       <order v-if="router==1"></order>
       <search v-if="router==2"></search>
+      <admin v-if="router==3"></admin>
+      <service v-if="router==4"></service>
    </div>
 </template>
 
