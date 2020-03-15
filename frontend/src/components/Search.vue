@@ -22,7 +22,7 @@ export default {
 	methods:{
 		callBackOn(data){
 			this.callBackData = data
-			console.log(data)
+			//console.log(data)
 		},
 		check(){
 			console.log(this.callBackData)

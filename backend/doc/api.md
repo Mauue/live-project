@@ -1,9 +1,9 @@
 
-GET `api/order` 获取当前或下一次预约信息
+[GET `api/order` 获取当前或下一次预约信息](api/order_info.md)
 
 [POST `api/order` 提交预约信息](api/new_order.md)
 
-[GET `api/order/status?id=?` 获取预约信息]()
+[GET `api/order/<orderid>` 获取预约信息](api/order_one_info.md)
 
 [POST `api/bg/order/set`  设置预约信息](api/set_order.md)
 

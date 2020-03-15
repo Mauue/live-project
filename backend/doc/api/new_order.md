@@ -13,8 +13,8 @@
     |:---|:---|:---|
     |name|string|名字|
     |phone|string|电话|
-    |name|string|身份证号|
-    |phone|string|订单数量|
+    |id_num|string|身份证号|
+    |order_num|string|订单数量|
 
 
 - 返回示例
