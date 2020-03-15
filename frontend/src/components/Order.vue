@@ -23,14 +23,29 @@ export default {
 	methods:{
 		callBackOn(data){
 			this.callBackData = data
-			console.log(data)
+			//console.log(data)
 		},
 		submit(){
-			console.log(this.callBackData)
-			var url = ''
-			// $ajax.post(url, this.callBackData,(data)=>{
-				
-			// })
+			//console.log(this.callBackData)  不清楚就输出看一下
+			
+			//console.log(require('../js/url').url + `/api/order`)
+			if(!this.callBackData){
+				this.$alert('请检查输入', "false");
+				return
+			}
+			var obj = {
+				name:this.callBackData[0],
+				identity:this.callBackData[1],
+				phone:this.callBackData[2],
+				number:this.callBackData[3],
+			}
+			$ajax.post(require('../js/url.js') + `/api/order`,obj)
+			.then(doc=>{
+				doc.data.code==0 && this.$alert(doc.data.msg, "true");
+				doc.data.code==1 && this.$alert(doc.data.msg, "false");
+			}).catch(err=>{
+				this.$alert("未知错误", "false");
+			})
 		}
 	},
 	computed:{

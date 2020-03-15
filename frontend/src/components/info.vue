@@ -52,11 +52,11 @@ export default {
 				t = /^[^\x00-\xff]+$/g.test(text) && text.length>=min && text.length<=max
 				this.inputValid[index] = Boolean(t)
 			}
-			// var flag = true
-			// for(let i=0;i<=this.config.length;i++){
-			// 	let v = this.inputValid[i]
-			// 	if(!v) flag = false
-			// }
+			var flag = true
+			for(let i=0;i<this.config.length;i++){
+				let v = this.inputValid[i]
+				if(!v) flag = false
+			}
 			this.$emit('callBack',this.inputText)
 		}
 	}
