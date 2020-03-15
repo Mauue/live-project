@@ -1,10 +1,7 @@
 <template>
    <div id="app">
 		<info :config="getConfig" @callBack="callBackOn"></info>
-		<button @click="submit" style="margin-top:7px">
-			<img src="../assets/load.svg" />
-			登录
-		</button>
+		<button @click="router=5" style="margin-top:7px">登录</button>
 	</div>
 </template>
 
@@ -17,7 +14,7 @@ export default {
 	data(){
 		return{
 			MaskMaxNum:3,
-			callBackData:null,
+            callBackData:null,
 		}
 	},
 	methods:{
@@ -36,10 +33,10 @@ export default {
 	computed:{
 		getConfig(){
 			return [
-				{name:"用户名",type:"chn",size:[2,4]},
-				{name:"密码",type:"digit",size:[18,18]},
+				{name:"用户名",type:"chn",size:[2,8]},
+				{name:"密码",type:"digit",size:[6,18]},
 			]
-		}
-	}
+        }
+    }
 };
 </script>
