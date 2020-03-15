@@ -8,7 +8,8 @@ from db import get_db
 from datetime import datetime
 from util.draw import draw_mask
 
-@api.route('/bg/order/set', methods=['POST'])
+
+@api.route('/bg/order/set', methods=['GET', 'POST'])
 def set_order():
     current_time = datetime.now()
     start_time = request.form.get('start_time')
@@ -65,6 +66,33 @@ def finish_order():
     if msg:
         return make_response(msg=msg, code=100)
     return make_response()
+
+
+@api.route('/bg/order')
+def order_list():
+    db, cursor = get_db()
+    cursor.execute("SELECT * FROM order_set ORDER BY status, id DESC")
+    data = cursor.fetchall()
+    for record in data:
+        record['start_time'] = record['start_time'].strftime('%Y-%m-%d %H:%M:%S')
+        record['end_time'] = record['end_time'].strftime('%Y-%m-%d %H:%M:%S')
+    return make_response(data=data)
+
+
+@api.route('/bg/order/<int:id>')
+def order_success_list(id):
+    db, cursor = get_db()
+    cursor.execute("SELECT status FROM order_set WHERE id=%s", id)
+    round = cursor.fetchone()
+    if round is None:
+        return make_response(msg="该预约场次不存在", code=100)
+    if round['status'] == 0:
+        return make_response(msg="该预约场次未开始抽签", code=200)
+
+    cursor.execute("SELECT phone, name, id_number, order_num, id"
+                   " FROM orders WHERE status=1 AND round_id=%s", id)
+    data = cursor.fetchall()
+    return make_response(data=data)
 
 
 def login_required(view):
