@@ -1,4 +1,5 @@
 import functools
+import time
 
 from api import api, make_response
 from flask import request, session
@@ -7,11 +8,14 @@ from db.admin import check_admin
 
 @api.route('/bg/set_order', methods=['POST'])
 def set_order():
+    current_time = time.time()
     start_time = request.form.get('start_time')
     end_time = request.form.get('end_time')
     total = request.form.get('total')
     order_max = request.form.get('order_max')
 
+    if start_time <current_time or start_time > end_time or order_max > total or total < 1 or order_max < 1:
+        return make_response(msg="设置错误")
     if start_time is None:
         return make_response(msg="未设置开始日期")
     if end_time is None:
@@ -24,6 +28,8 @@ def set_order():
     db, cursor = get_db()
     cursor.execute("INSERT INTO order_set(start_time, end_time, total, order_max) "
                    "values (%s, %s, %s, %s)", (start_time, end_time, total, order_max))
+    return make_response(msg="设置成功")
+
 
 
 
