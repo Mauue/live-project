@@ -32,9 +32,10 @@
 
 <script>
 import order from "./components/Order.vue";
+import search from "./components/Search.vue";
 export default {
    name: "App",
-   components: { order },
+   components: { order,search },
    data(){
       return{
          router: 0
